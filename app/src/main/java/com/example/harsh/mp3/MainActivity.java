@@ -29,7 +29,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
         DatabaseReference mRef= FirebaseDatabase.getInstance().getReference();
-    ListView list1;
+
     private FragmentTransaction fragmentTransaction;
         String abc="content_main";
     @Override
@@ -92,17 +92,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.Home) {
-            Home myFragment2=new Home();
-            populateListView();
-            registerClickCallback();
+            Home myFragment2 = new Home();
             fragmentTransaction.replace(R.id.content_main,myFragment2);
             fragmentTransaction.commit();
-
         } else if (id == R.id.Current_Matches) {
             CurrentMatches myFragment1=new CurrentMatches();
             fragmentTransaction.replace(R.id.content_main,myFragment1);
             fragmentTransaction.commit();
-
 
         } else if (id == R.id.Upcoming_Matches) {
             UpcomingMatches myFragment3=new UpcomingMatches();
@@ -132,56 +128,8 @@ public class MainActivity extends AppCompatActivity
         return true;
 
     }
-    DatabaseReference mRootName=mRef.child("cricit").child("news");
-    final List<String> listinnews=new ArrayList<String>();
-
-
-    private void populateListView(){
-        String[] myitems={"1","2","3","4","5","6","7","8"};
-
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.daitems,myitems);
-
-        ListView list1=(ListView) findViewById(R.id.lv2);
-        ListView list2=(ListView) findViewById(R.id.lv1);
-        list1.setAdapter(adapter);
-        list2.setAdapter(adapter);
-
-    }
-
-    private void registerClickCallback(){
-        list1=(ListView) findViewById(R.id.lv2);
-        ListView lvTest = (ListView) findViewById(R.id.lv1);
-        ValueEventListener valueEventListener=mRootName.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                    listinnews.add(String.valueOf(dsp.getKey()));
-                }
-                System.out.println(listinnews);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,listinnews);
-
-                list1.setAdapter(adapter);
-
-
-            }
 
 
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        list1.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
-                TextView textView=(TextView) viewClicked;
-                String message="You Clicked #"+position+",which is string:"+textView.getText().toString();
-                Toast.makeText(MainActivity.this,message,Toast.LENGTH_LONG).show();
-            }
-        });
-    }
 
 }
