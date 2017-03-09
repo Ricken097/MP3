@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Home"
+
+            android:title="Home" />
+        <item
+            android:id="@+id/Current_Matches"
+
+            android:title="Current Matches" />
+        <item
+            android:id="@+id/Upcoming_Matches"
+
+
+            android:title="Upcoming Matches" />
+        <item
+            android:id="@+id/Recent_Results"
+
+            android:title="Recent Results" />
+
+    </group>
+
+    <item android:title="Numbers">
+        <menu>
+            <item
+                android:id="@+id/Player_Stats"
+
+                android:title="Player Stats" />
+            <item
+                android:id="@+id/Series_Stats"
+
+                android:title="Series Stats" />
+        </menu>
+    </item>
+
+</menu>

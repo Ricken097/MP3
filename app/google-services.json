@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "335929356272",
+    "firebase_url": "https://miniproject-eaaf0.firebaseio.com",
+    "project_id": "miniproject-eaaf0",
+    "storage_bucket": "miniproject-eaaf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335929356272:android:856beeb2b7536337",
+        "android_client_info": {
+          "package_name": "com.example.harsh.mp3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335929356272-ls2bgf6fktbf0vnshdptvquv0duf5ksr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3JyS0-Xp_fl2NI2M4M1WTL-oucymT3Z8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
