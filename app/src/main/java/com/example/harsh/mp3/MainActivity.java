@@ -1,6 +1,8 @@
 package com.example.harsh.mp3;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -32,12 +34,18 @@ public class MainActivity extends AppCompatActivity
 
     private FragmentTransaction fragmentTransaction;
         String abc="content_main";
+    Fragment fragment = null;
+    Class fragmentClass = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(R.id.content_main, new Home());
+        tx.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -50,9 +58,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-           android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
 
-          fragmentTransaction=fragmentManager.beginTransaction();
     }
 
     @Override
@@ -91,45 +97,39 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
         if (id == R.id.Home) {
-            Home myFragment2 = new Home();
-            fragmentTransaction.replace(R.id.content_main,myFragment2);
-            fragmentTransaction.commit();
-        } else if (id == R.id.Current_Matches) {
-            CurrentMatches myFragment1=new CurrentMatches();
-            fragmentTransaction.replace(R.id.content_main,myFragment1);
-            fragmentTransaction.commit();
-
-        } else if (id == R.id.Upcoming_Matches) {
-            UpcomingMatches myFragment3=new UpcomingMatches();
-            fragmentTransaction.replace(R.id.content_main,myFragment3);
-            fragmentTransaction.commit();
-
-        } else if (id == R.id.Recent_Results) {
-           RecentResults myFragment4=new RecentResults();
-            fragmentTransaction.replace(R.id.content_main,myFragment4);
-            fragmentTransaction.commit();
-
-        } else if (id == R.id.Player_Stats) {
-            PlayerStats myFragment5=new PlayerStats();
-            fragmentTransaction.replace(R.id.content_main,myFragment5);
-            fragmentTransaction.commit();
-
-        } else if (id == R.id.Series_Stats) {
-            TeamStats myFragment6=new TeamStats();
-            fragmentTransaction.replace(R.id.content_main,myFragment6);
-            fragmentTransaction.commit();
-
+            fragmentClass = Home.class;
         }
+        else if (id == R.id.Current_Matches) {
+            fragmentClass = CurrentMatches.class;
+        }
+        else if (id == R.id.Upcoming_Matches) {
+            fragmentClass = UpcomingMatches.class;
+        }
+        else if (id == R.id.Recent_Results) {
+            fragmentClass = RecentResults.class;
+        }
+        else if (id == R.id.Player_Stats) {
+            fragmentClass = PlayerStats.class;
+        }
+        else if (id == R.id.Series_Stats) {
+            fragmentClass = PlayerStats.class;
+        }
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-
         return true;
 
     }
-
-
-
 
 }

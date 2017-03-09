@@ -1,11 +1,13 @@
 package com.example.harsh.mp3;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -51,11 +53,23 @@ public class Home extends Fragment {
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                     listinnews.add(String.valueOf(dsp.getKey()));
                 }
-                System.out.println("Hello!!!!!!!!!!!sdncscnhcsnhcsfhhbjbhchbchjcbjhhhjb");
                 System.out.println(listinnews);
                 ArrayAdapter<String> adapterNews = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, listinnews);
                 list2 = (ListView) rootView.findViewById(R.id.lv2);
                 list2.setAdapter(adapterNews);
+
+                AdapterView.OnItemClickListener mMessageClickedHandler = new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView parent, View v, int position, long id) {
+                        String clickValueHistory =(String) (list2.getItemAtPosition(position));
+                        NewsDetails th = new NewsDetails();
+                        th.sendValue(clickValueHistory);
+
+                        Intent intent = new Intent(v.getContext(), NewsDetails.class);
+                        startActivity(intent);
+                    }
+                };
+
+                list2.setOnItemClickListener(mMessageClickedHandler);
             }
 
 
