@@ -27,9 +27,9 @@ import java.util.List;
 public class Home extends Fragment {
 
     ListView list1, list2;
+    String title1;
 
-
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();;
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
     View rootView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class Home extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        String[] myitems = {"1", "2", "3", "4", "5", "6", "7", "8"};
+        String[] myitems = {"India Vs Australia", "England Vs West Indies", "South Africa Vs New Zealand"};
         list1 = (ListView) rootView.findViewById(R.id.lv1);
 
         ArrayAdapter<String> adapterScore = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, myitems);
@@ -53,7 +53,6 @@ public class Home extends Fragment {
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                     listinnews.add(String.valueOf(dsp.getKey()));
                 }
-                System.out.println(listinnews);
                 ArrayAdapter<String> adapterNews = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, listinnews);
                 list2 = (ListView) rootView.findViewById(R.id.lv2);
                 list2.setAdapter(adapterNews);
@@ -64,7 +63,7 @@ public class Home extends Fragment {
                         NewsDetails th = new NewsDetails();
                         th.sendValue(clickValueHistory);
 
-                        Intent intent = new Intent(v.getContext(), NewsDetails.class);
+                        Intent intent = new Intent(v.getContext(), Temporary.class);
                         startActivity(intent);
                     }
                 };

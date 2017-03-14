@@ -13,46 +13,43 @@
     >
 
     <TextView
-        android:text="Live Matches"
-        android:layout_width="match_parent"
-        android:layout_alignParentStart="true"
         android:id="@+id/matches"
-        android:textSize="32sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        android:layout_alignParentStart="true"
+        android:text="Live Matches"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textSize="32sp" />
+
+    <ListView
+        android:id="@+id/lv1"
+        style="@style/TwoWayView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+
+        android:layout_below="@+id/matches"
+        android:layout_marginTop="21dp"
+
+        tools:layout_height="?android:attr/listPreferredItemHeight" />
 
     <TextView
-        android:text="News"
+        android:id="@+id/news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/news"
-        android:textSize="32sp"
-        android:layout_below="@+id/matches"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="126dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        android:layout_below="@+id/lv1"
+        android:layout_marginTop="41dp"
+        android:text="News"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textSize="32sp" />
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/matches"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="21dp"
-        style="@style/TwoWayView"
-        android:id="@+id/lv1"
-
-        android:layout_height="60dp"
-        tools:layout_height="?android:attr/listPreferredItemHeight"
-
-        />
-
-    <ListView
+        android:id="@+id/lv2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/news"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp"
-        android:id="@+id/lv2" />
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
