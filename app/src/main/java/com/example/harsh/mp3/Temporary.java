@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -44,7 +42,7 @@ public class Temporary extends AppCompatActivity {
             // Do some validation here
 
             try {
-                URL url = new URL("https://newsapi.org/v1/articles?source=espn-cric-info&sortBy=top&apiKey=a437797d1236452c98af1204492f3a8f");
+                URL url = new URL("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20cricket.player.profile%20where%20player_id%3D2962&format=json&diagnostics=true&env=store%3A%2F%2F0TxIGQMQbObzvU4Apia0V0&callback=");
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -70,20 +68,25 @@ public class Temporary extends AppCompatActivity {
             }
             try {
                 JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
-                JSONArray articles = object.getJSONArray("articles");
+                JSONObject query = object.getJSONObject("query");
+                title1 = query.getString("created");
+                System.out.println("IN TEMPORARY COUNT========" + title1);
+
+                //JSONObject results = query.getJSONObject("results");
+                //JSONArray player = results.getJSONArray("PlayerProfile");
 
 
                 final List<String> listinnews = new ArrayList<String>();
 
-                for (int i = 0; i < articles.length(); i++) {
-                    JSONObject p = (JSONObject) articles.get(i);
-                    title1 = p.getString("title");
-                    listinnews.add(title1);
+                //for (int i = 0; i < player.length(); i++) {
+                //  JSONObject p = (JSONObject) player.get(i);
+                //title1 = p.getString("personid");
+                //listinnews.add(title1);
 
-                    ArrayAdapter<String> adapterNews = new ArrayAdapter<String>(Temporary.this, android.R.layout.simple_list_item_1, listinnews);
-                    data = (ListView) findViewById(R.id.data);
-                    data.setAdapter(adapterNews);
-                }
+                //ArrayAdapter<String> adapterNews = new ArrayAdapter<String>(Temporary.this, android.R.layout.simple_list_item_1, listinnews);
+                //data = (ListView) findViewById(R.id.data);
+                //data.setAdapter(adapterNews);
+                // }
 
             } catch (JSONException e) {
                 // Appropriate error handling code
