@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = RecentResults.class;
         }
         else if (id == R.id.Player_Stats) {
-            fragmentClass = PlayerStats.class;
+            fragmentClass = Player_Details.class;
         }
         else if (id == R.id.Series_Stats) {
             fragmentClass = PlayerStats.class;

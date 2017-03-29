@@ -43,7 +43,6 @@ public class Home extends Fragment {
         ArrayAdapter<String> adapterScore = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, myitems);
         list1.setAdapter(adapterScore);
 
-
         DatabaseReference mRootName = mRef.child("cricit").child("news");
         final List<String> listinnews = new ArrayList<String>();
 

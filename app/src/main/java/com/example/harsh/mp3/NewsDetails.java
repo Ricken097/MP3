@@ -32,7 +32,7 @@ public class NewsDetails extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        para = (TextView) findViewById(R.id.NewsHead);
+        //para = (TextView) findViewById(R.id.NewsHead);
         para.setText(clickValue);
 
         news = (TextView) findViewById(R.id.NewsPara);
