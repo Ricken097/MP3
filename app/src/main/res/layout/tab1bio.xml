@@ -26,10 +26,11 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/image"
         android:layout_marginStart="11dp"
+        android:background="#E7EFEA"
         android:text="Style"
         android:textStyle="normal|bold" />
 
@@ -105,9 +106,10 @@
     <TextView
         android:id="@+id/textView13"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="20dp"
         android:layout_alignStart="@+id/textView12"
         android:layout_below="@+id/textView12"
+        android:background="#E7EFEA"
         android:text="Teams Played For"
         android:textStyle="normal|bold" />
 
@@ -121,17 +123,12 @@
     <TextView
         android:id="@+id/textView15"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:layout_alignStart="@+id/teams"
         android:layout_below="@+id/teams"
-        android:text="Info" />
-
-    <TextView
-        android:id="@+id/info"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignStart="@+id/textView15"
-        android:layout_below="@+id/textView15" />
+        android:background="#E7EFEA"
+        android:text="Info"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/bat_style"
@@ -146,5 +143,12 @@
         android:layout_height="30dp"
         android:layout_below="@+id/bat_style"
         android:layout_toEndOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
