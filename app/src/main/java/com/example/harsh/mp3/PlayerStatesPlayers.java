@@ -53,7 +53,7 @@ public class PlayerStatesPlayers extends AppCompatActivity {
             System.out.println("PLAYERID IN PLAYERSTATESPLAYER" + pid);
 
 
-            Intent intent = new Intent(v.getContext(), Temp.class);
+            Intent intent = new Intent(v.getContext(), Player_Details.class);
             startActivity(intent);
             PlayerStatesPlayers.this.finish();
 

@@ -40,6 +40,11 @@
             android:name=".PlayerStatesPlayers"
             android:label="@string/title_activity_player_states_players"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Player_Details"
+            android:label="Player_Details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
     </application>
 
 </manifest>
