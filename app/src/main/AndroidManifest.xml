@@ -39,6 +39,10 @@
         <activity
             android:name=".PlayerStatesPlayers"
             android:label="@string/title_activity_player_states_players"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Temp"
+            android:label="@string/title_activity_temp"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
