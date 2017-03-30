@@ -37,8 +37,8 @@
             android:label="@string/title_activity_temporary"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Player_Details"
-            android:label="@string/title_activity_player__details"
+            android:name=".PlayerStatesPlayers"
+            android:label="@string/title_activity_player_states_players"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

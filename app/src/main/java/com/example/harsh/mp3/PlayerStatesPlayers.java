@@ -24,34 +24,45 @@ public class PlayerStatesPlayers extends AppCompatActivity {
     ListView listView;
     long pid;
     DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+    AdapterView.OnItemClickListener mMessageClickedHandler = new AdapterView.OnItemClickListener() {
+
+        public void onItemClick(AdapterView parent, View v, int position, long id) {
+            String clickValuePlayer = (String) (listView.getItemAtPosition(position));
+            PlayerStatesPlayers tn = new PlayerStatesPlayers();
+
+            DatabaseReference mPlayerId = database.getReference("cricit/player stats/Team/" + TeamName + "/" + clickValuePlayer);
+
+            System.out.println("In fetchfromAPIPlayerTEAMNAME=" + TeamName);
+            System.out.println("In fetchfromAPIPlayerPLAYERNAME=" + clickValuePlayer);
+            mPlayerId.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot ds) {
+                    pid = (Long) ds.child("pid").getValue();
+                    System.out.println("In PLAYERMENU ID=====" + pid);
+                    PlayerPersonalDetails ppd = new PlayerPersonalDetails();
+                    ppd.sendPid(pid);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+            System.out.println("PLAYERID IN PLAYERSTATESPLAYER" + pid);
+
+
+            Intent intent = new Intent(v.getContext(), Temp.class);
+            startActivity(intent);
+            PlayerStatesPlayers.this.finish();
+
+        }
+    };
 
     public void sendValue(String clickValueTeam) {
         PlayerStatesPlayers.TeamName = clickValueTeam;
         System.out.println(TeamName + "+++++++++++");
-    }
-
-
-    private void fetchfromAPIPlayer(String s) {
-
-        DatabaseReference mPlayerId = database.getReference("cricit/player stats/Team/" + TeamName + "/" + s);
-
-        System.out.println("In fetchfromAPIPlayerTEAMNAME=" + TeamName);
-        System.out.println("In fetchfromAPIPlayerPLAYERNAME=" + s);
-        mPlayerId.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot ds) {
-                pid = (Long) ds.child("pid").getValue();
-                //System.out.println("In PLAYERMENU ID====="+pid);
-                PlayerPersonalDetails ppd = new PlayerPersonalDetails();
-                ppd.sendPid(pid);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
     }
 
     @Override
@@ -76,21 +87,6 @@ public class PlayerStatesPlayers extends AppCompatActivity {
                 ArrayAdapter<String> adapterPlayers = new ArrayAdapter<String>(PlayerStatesPlayers.this, android.R.layout.simple_list_item_1, listinteams);
                 listView = (ListView) findViewById(R.id.playerlist);
                 listView.setAdapter(adapterPlayers);
-
-                AdapterView.OnItemClickListener mMessageClickedHandler = new AdapterView.OnItemClickListener() {
-
-                    public void onItemClick(AdapterView parent, View v, int position, long id) {
-                        String clickValuePlayer = (String) (listView.getItemAtPosition(position));
-                        PlayerStatesPlayers tn = new PlayerStatesPlayers();
-                        tn.fetchfromAPIPlayer(clickValuePlayer);
-
-
-                        Intent intent = new Intent(v.getContext(), Temporary.class);
-                        startActivity(intent);
-                        new PlayerPersonalDetails().execute();
-                    }
-                };
-
                 listView.setOnItemClickListener(mMessageClickedHandler);
             }
 
