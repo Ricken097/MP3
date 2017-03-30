@@ -1,5 +1,6 @@
 package com.example.harsh.mp3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -111,20 +112,23 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = RecentResults.class;
         }
         else if (id == R.id.Player_Stats) {
-            fragmentClass = Player_Details.class;
+            startActivity(new Intent(this,Player_Details.class));
         }
         else if (id == R.id.Series_Stats) {
             fragmentClass = PlayerStats.class;
         }
 
         try {
-            fragment = (Fragment) fragmentClass.newInstance();
+            if(fragmentClass!=null) {
+                fragment = (Fragment) fragmentClass.newInstance();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

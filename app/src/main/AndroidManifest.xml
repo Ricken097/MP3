@@ -35,6 +35,10 @@
         <activity
             android:name=".Temporary"
             android:label="@string/title_activity_temporary"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Player_Details"
+            android:label="@string/title_activity_player__details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
